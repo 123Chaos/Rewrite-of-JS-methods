@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button id="btn" disabled="true">请阅读用户协议(3s)</button>
+    <script>
+      let i = 3;
+      let timer = setInterval(() => {
+        document.querySelector("#btn").innerHTML = `请阅读用户协议(${--i}s)`;
+        if (i == 0) {
+          document.querySelector("#btn").disabled = false;
+          document.querySelector("#btn").innerHTML = `已阅读用户协议`;
+          clearInterval(timer);
+        }
+      }, 1000);
+    </script>
+  </body>
+</html>
