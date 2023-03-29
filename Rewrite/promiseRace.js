@@ -1,20 +1,13 @@
-function myPromiseAll(promises) {
+function myPromiseRace(promises) {
   return new Promise((resolve, reject) => {
-    let res = [];
-    let counter = 0;
-    for (const promise of promises) {
+    for (const promise of promises)
       Promise.resolve(promise)
         .then((value) => {
-          counter++;
-          res.push(value);
-          if (counter == promises.length) {
-            resolve(res);
-          }
+          resolve(value);
         })
         .catch((reason) => {
           reject(reason);
         });
-    }
   });
 }
 const p1 = new Promise((resolve, reject) => {
@@ -29,7 +22,7 @@ const p2 = new Promise((resolve, reject) => {
   }, 2000);
 });
 
-myPromiseAll([p1, p2])
+myPromiseRace([p1, p2])
   .then((value) => {
     console.log(value);
   })
