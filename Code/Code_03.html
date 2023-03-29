@@ -38,15 +38,18 @@
     </div>
     <script>
       document.querySelector(".div1").addEventListener("click", (e) => {
-        console.log(e.currentTarget);
+        console.log(e.currentTarget.className);
       });
       document.querySelector(".div2").addEventListener("click", (e) => {
-        console.log(e.currentTarget);
+        console.log(e.currentTarget.className);
       });
       document.querySelector(".div3").addEventListener("click", (e) => {
-        console.log(e.currentTarget);
-        e.stopPropagation();
-        e.preventDefault();
+        console.log(e.currentTarget.className);
+        if (e && e.stopPropagation) {
+          e.stopPropagation();
+        } else {
+          window.event.cancelBubble = true;
+        }
       });
     </script>
   </body>

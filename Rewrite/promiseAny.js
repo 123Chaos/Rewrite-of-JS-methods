@@ -5,26 +5,26 @@ function myPromiseAll(promises) {
     for (const promise of promises) {
       Promise.resolve(promise)
         .then((value) => {
-          res.push(value);
-          if (++counter == promises.length) {
-            resolve(res);
-          }
+          resolve(value);
         })
         .catch((reason) => {
-          reject(reason);
+          res.push(reason);
+          if (++counter == promises.length) {
+            reject("All promises failed");
+          }
         });
     }
   });
 }
 const p1 = new Promise((resolve, reject) => {
   setTimeout(() => {
-    resolve("p1 延时一秒");
+    reject("p1 延时一秒");
   }, 1000);
 });
 
 const p2 = new Promise((resolve, reject) => {
   setTimeout(() => {
-    resolve("p2 延时两秒");
+    reject("p2 延时两秒");
   }, 2000);
 });
 
