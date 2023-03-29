@@ -1,6 +1,6 @@
 # Rewrite of some functions in javaScript
 
-- 本项目是一些js方法的重写，觉得有用的话请点一下小星星，谢谢您！
+- 本项目是一些js方法的重写，以及某些比较常见的算法和场景题。觉得有用的话请点一下小星星，谢谢您！
 - 运行方式: 浏览器->F12->console(控制台)->复制粘贴 **OR** 安装Nodejs -> 使用node xx.js 进行运行
 
 ```js
