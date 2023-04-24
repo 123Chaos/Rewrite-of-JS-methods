@@ -1,17 +1,15 @@
 let func = (arr) => {
   let res = [];
-  let len = arr.length;
   let backtracking = (tempArr, leftArr) => {
-    if (tempArr.length === len) {
+    if (tempArr.length === arr.length) {
       res.push(tempArr); // 数组
       //   res.push(tempArr.join("")); // 字符串
-    } else {
-      leftArr.forEach((item, index) => {
-        let temp = [].concat(leftArr);
-        temp.splice(index, 1);
-        backtracking(tempArr.concat(item), temp);
-      });
     }
+    leftArr.forEach((item, index) => {
+      let temp = [].concat(leftArr);
+      temp.splice(index, 1);
+      backtracking(tempArr.concat(item), temp);
+    });
   };
   backtracking([], arr);
   return res;

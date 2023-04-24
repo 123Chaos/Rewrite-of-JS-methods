@@ -16,6 +16,25 @@ function myPromiseAll(promises) {
     }
   });
 }
+
+function myPromiseAll(promises) {
+  return new Promise((resolve, reject) => {
+    let res = [];
+    let counter = 0;
+    for (const promise of promises) {
+      Promise.resolve(promise)
+        .then((value) => {
+          res.push(value);
+          if (++counter === promise.length) {
+            resolve(res);
+          }
+        })
+        .catch((reason) => {
+          reject(reason);
+        });
+    }
+  });
+}
 const p1 = new Promise((resolve, reject) => {
   setTimeout(() => {
     resolve("p1 延时一秒");
